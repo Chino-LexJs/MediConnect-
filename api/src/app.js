@@ -24,6 +24,7 @@ const path = require("path");
 const nodemailer = require("nodemailer");
 require("./db.js");
 
+// comment
 //Para poder comparar con la password encrypt
 function comparePassword(password, passwordDB) {
   return bcryptjs.compareSync(password, passwordDB);
@@ -165,13 +166,13 @@ const server = express();
 server.name = "API";
 
 // middlewares
-server.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+server.use(cors({ credentials: true, origin: "*" }));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 server.use(cookieParser("secret"));
 server.use(morgan("dev"));
 server.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",

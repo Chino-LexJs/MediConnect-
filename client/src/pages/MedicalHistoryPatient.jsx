@@ -20,21 +20,21 @@ function MedicalHistoryPatient(props) {
 
   const getAllergies = async (id) => {
     const response = await axios.get(
-      `http://localhost:3001/patient/allergy/${id}`
+      `/patient/allergy/${id}`
     );
     setAllergies(response.data.data);
   };
 
   const getDiseases = async (id) => {
     const response = await axios.get(
-      `http://localhost:3001/patient/disease/${id}`
+      `/patient/disease/${id}`
     );
     setDiseases(response.data.data);
   };
 
   const getPrescriptions = async (id) => {
     const response = await axios.get(
-      `http://localhost:3001/patient/prescription_drug/${id}`
+      `/patient/prescription_drug/${id}`
     );
     setPrescriptions(response.data.data);
   };

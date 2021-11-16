@@ -26,7 +26,7 @@ function MedicalHistoryDoctor(props) {
   useEffect(() => {
     const getPatient = async (patientId) => {
       const response = await axios.get(
-        `http://localhost:3001/patient/${patientId}`
+        `/patient/${patientId}`
       );
       const data = await response.data.data;
       setPatientData({

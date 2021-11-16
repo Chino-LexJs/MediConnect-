@@ -14,7 +14,7 @@ function PrescriptionInfo({ setDisplayed, patientId }) {
 
   const getPrescriptions = async (patientId) => {
     const response = await axios.get(
-      `http://localhost:3001/patient/prescription_drug/${patientId}`
+      `/patient/prescription_drug/${patientId}`
     );
     setPrescriptions(response.data.data);
   };
@@ -22,7 +22,7 @@ function PrescriptionInfo({ setDisplayed, patientId }) {
   const handleDelete = async (prescriptionId, patientId, prescription) => {
     try {
       await axios.delete(
-        `http://localhost:3001/patient/prescription_drug/${patientId}?idPrescription_drug=${prescriptionId}`
+        `/patient/prescription_drug/${patientId}?idPrescription_drug=${prescriptionId}`
       );
 
       swal({

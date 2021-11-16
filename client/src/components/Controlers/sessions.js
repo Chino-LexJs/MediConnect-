@@ -15,7 +15,7 @@ export const logout = (history) => {
   }).then(async (value) => {
     switch (value) {
       case "catch":
-        await axios.get(`http://localhost:3001/login/logout`);
+        await axios.get(`/login/logout`);
         sessionStorage.clear();
         history.push("/");
         break;

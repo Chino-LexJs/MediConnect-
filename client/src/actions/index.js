@@ -1,18 +1,17 @@
 import axios from "axios";
 import types from "./types.js";
 import swal from "sweetalert";
-const URL = "http://localhost:3001";
 
 export const getDoctors = (id_patient) => {
   return async function (dispatch) {
-    const response = await axios.get(`${URL}/patient/doctors/${id_patient}`);
+    const response = await axios.get(`/patient/doctors/${id_patient}`);
     dispatch({ type: types.GET_DOCTORS, payload: response });
   };
 };
 
 export const getUser = (user) => {
   return async function (dispatch) {
-    const response = await axios.post(`${URL}/login`, user, {
+    const response = await axios.post(`/login`, user, {
       withCredentials: true,
     });
     sessionStorage.setItem("user", JSON.stringify(response.data));
@@ -23,7 +22,7 @@ export const getUser = (user) => {
 export const postDoctor = (payload, history) => {
   return async function (dispatch) {
     try {
-      const response = await axios.post(`${URL}/doctor`, payload);
+      const response = await axios.post(`/doctor`, payload);
       swal({
         title: `El registro fue exitoso`,
         icon: "success",
@@ -47,7 +46,7 @@ export const postDoctor = (payload, history) => {
 export function getSpecialities() {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${URL}/specialities`);
+      const response = await axios.get(`/specialities`);
       return dispatch({
         type: types.GET_SPECIALITIES,
         payload: response.data,
@@ -61,7 +60,7 @@ export function getSpecialities() {
 export const postPatient = (payload, history) => {
   return async function (dispatch) {
     try {
-      await axios.post(`${URL}/patient`, payload);
+      await axios.post(`/patient`, payload);
       swal({
         title: `El registro fue exitoso`,
         icon: "success",
@@ -85,7 +84,7 @@ export const postPatient = (payload, history) => {
 export const getHealthInsurances = () => {
   return async function (dispatch) {
     try {
-      let healthInsurances = await axios.get(`${URL}/healthinsurance`);
+      let healthInsurances = await axios.get(`/healthinsurance`);
       return dispatch({
         type: types.GET_HEALTHINSURANCES,
         payload: healthInsurances.data,
@@ -99,7 +98,7 @@ export const getHealthInsurances = () => {
 export const getMyDoctors = (payload) => {
   return async function (dispatch) {
     try {
-      let myDocs = await axios.get(`${URL}/patient/doctors/${payload}`);
+      let myDocs = await axios.get(`/patient/doctors/${payload}`);
       return dispatch({
         type: types.GET_MY_DOCTORS,
         payload: myDocs.data,
@@ -113,7 +112,7 @@ export const getMyDoctors = (payload) => {
 export const postMyDoctor = (payload, id_Doctor) => {
   return async function (dispatch) {
     try {
-      await axios.post(`${URL}/patient/doctors/${payload}`, {
+      await axios.post(`/patient/doctors/${payload}`, {
         id_Doctor: id_Doctor,
       });
       swal({
@@ -135,7 +134,7 @@ export const filterMyPatientsByName = (patientName, id_doctor) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `${URL}/doctor/patients/${id_doctor}?patient=${patientName}`
+        `/doctor/patients/${id_doctor}?patient=${patientName}`
       );
       // console.log("action filterMyPatient", response);
       if (response.data.data.length) {
@@ -185,7 +184,7 @@ export const filterDoctorsByName = (nameDoc, idPatient) => {
   return async function (dispatch) {
     try {
       let response = await axios.get(
-        `${URL}/patient/doctors/${idPatient}?doctor=${nameDoc}`
+        `/patient/doctors/${idPatient}?doctor=${nameDoc}`
       );
       return dispatch({
         type: types.FILTER_DOCTORS_BY_NAME,
@@ -202,7 +201,7 @@ export const filterMyDoctorsByName = (nameDoc, idPatient) => {
   return async function (dispatch) {
     try {
       let response = await axios.get(
-        `${URL}/patient/doctors/${idPatient}?doctor=${nameDoc}`
+        `/patient/doctors/${idPatient}?doctor=${nameDoc}`
       );
       return dispatch({
         type: types.FILTER_MY_DOCTORS_BY_NAME,
@@ -223,7 +222,7 @@ export const deleteDoctor = (id, id_Doctor) => {
   return async function (dispatch) {
     try {
       const response = await axios.delete(
-        `${URL}/patient/doctors/${id}?id_Doctor=${id_Doctor}`
+        `/patient/doctors/${id}?id_Doctor=${id_Doctor}`
       );
       return dispatch({
         type: types.DELETE_DOCTOR,
@@ -243,7 +242,7 @@ export const getNotifications = (idDoctor) => {
   return async function (dispatch) {
     try {
       const notif = await axios.get(
-        `${URL}/notifications?idDoctor=${idDoctor}&type=solicitud`
+        `/notifications?idDoctor=${idDoctor}&type=solicitud`
       );
       return dispatch({
         type: types.GET_NOTIFICATIONS,
@@ -265,7 +264,7 @@ export const deleteNotifications = (id) => {
 export const rejectNotification = (id) => {
   return async function (dispatch) {
     try {
-      await axios.put(`${URL}/notifications/reject`, { idPatient: id });
+      await axios.put(`/notifications/reject`, { idPatient: id });
       alert("Se rechazo la notificacion");
       return {
         type: types.REJECT_NOTIFICATION,
@@ -280,7 +279,7 @@ export const rejectNotification = (id) => {
 export const getMyPatients = (idDoctor) => {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${URL}/doctor/patients/${idDoctor}`);
+      const response = await axios.get(`/doctor/patients/${idDoctor}`);
       return dispatch({
         type: types.GET_MY_PATIENTS,
         payload: response.data,
@@ -303,7 +302,7 @@ export const getMessage = (dniSender, dniReciver) => {
   return async function (dispatch) {
     try {
       const response = await axios.get(
-        `${URL}/chat?dniSender=${dniSender}&dniReciver=${dniReciver}`
+        `/chat?dniSender=${dniSender}&dniReciver=${dniReciver}`
       );
       return dispatch({
         type: types.GET_MESSAGE,
@@ -317,7 +316,7 @@ export const getMessage = (dniSender, dniReciver) => {
 
 export const getConversations = (dniSender, dniReciver)=>{ 
       return async function(dispatch){
-        const response = await axios.get(`${URL}/chat/conversation?dniSender=${dniSender}&dniReciver=${dniReciver}`)
+        const response = await axios.get(`/chat/conversation?dniSender=${dniSender}&dniReciver=${dniReciver}`)
         return dispatch({
           type: types.GET_CONVERSATION,
           payload: response.data
@@ -327,7 +326,7 @@ export const getConversations = (dniSender, dniReciver)=>{
 
 export const getNotificationsMessage = (dniReciver) => {
   return async function (dispatch) {
-    const response = await axios.get(`${URL}/chat/notifications?dniReciver=${dniReciver}&type=message`)
+    const response = await axios.get(`/chat/notifications?dniReciver=${dniReciver}&type=message`)
     return dispatch({
       type: types.GET_NOTIFICATIONS_MESSAGE,
       payload: response.data
@@ -337,7 +336,7 @@ export const getNotificationsMessage = (dniReciver) => {
 
 export const deleteNotificationChat = (personDni) => {
   return async function (dispatch) {
-    await axios.delete(`${URL}/chat/notifications/delete?personDni=${personDni}&type=message`)
+    await axios.delete(`/chat/notifications/delete?personDni=${personDni}&type=message`)
     return dispatch({
       type: types.DELETE_NOTIFICATION_CHAT
     })

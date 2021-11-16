@@ -101,7 +101,7 @@ function NewAppointmentStep2(props) {
 
   const saveShift = async (date) => {
     const response = await axios.post(
-      `http://localhost:3001/doctor/appointment/${idDoctor}?patient=${patientId}`,
+      `/doctor/appointment/${idDoctor}?patient=${patientId}`,
       { date }
     );
     console.log(response.data);

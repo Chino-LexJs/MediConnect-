@@ -61,7 +61,7 @@ SOCKET_NOTIFICATION(ioNotification);
 SOCKET_CHAT(ioChat);
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async () => {
+conn.sync({ force: true }).then(async () => {
   if (await no_existen_Especialidades()) {
     const obras_sociales = excel_to_json(
       `${__dirname}/src/obras_sociales.xlsx`
@@ -76,5 +76,6 @@ conn.sync({ force: false }).then(async () => {
   const port = 3001;
   server_pp.listen(port, () => {
     console.log(`Server is executed on port ${port}`); // view on console
+
   });
 });

@@ -15,7 +15,7 @@ function AllergyInfo({ setDisplayed, patientId }) {
   const getAllegies = async (patientId) => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/patient/allergy/${patientId}`
+        `/patient/allergy/${patientId}`
       );
       setAllergies(response.data.data);
     } catch (error) {
@@ -26,7 +26,7 @@ function AllergyInfo({ setDisplayed, patientId }) {
   const handleDelete = async (allergyId, patientId) => {
     try {
       await axios.delete(
-        `http://localhost:3001/patient/allergy/${patientId}?idAllergy=${allergyId}`
+        `/patient/allergy/${patientId}?idAllergy=${allergyId}`
       );
 
       swal({

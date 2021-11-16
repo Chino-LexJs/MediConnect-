@@ -14,7 +14,7 @@ function DiseaseInfo({ setDisplayed, patientId }) {
 
   const getDiseases = async (patientId) => {
     const response = await axios.get(
-      `http://localhost:3001/patient/disease/${patientId}`
+      `/patient/disease/${patientId}`
     );
     setDiseases(response.data.data);
   };
@@ -22,7 +22,7 @@ function DiseaseInfo({ setDisplayed, patientId }) {
   const handleDelete = async (diseaseId, patientId) => {
     try {
       await axios.delete(
-        `http://localhost:3001/patient/disease/${patientId}?idDisease=${diseaseId}`
+        `/patient/disease/${patientId}?idDisease=${diseaseId}`
       );
 
       swal({

@@ -62,10 +62,9 @@ const AppointmentConfig = (props) => {
     return [parseInt(arr[0]), parseInt(arr[1])];
   };
   const postConfig = async (week) => {
-    const URL = "http://localhost:3001";
 
     const response = await axios.post(
-      `${URL}/doctor/workday/${props.match.params.id}`,
+      `/doctor/workday/${props.match.params.id}`,
       week
     );
     console.log("postConfig ", response);

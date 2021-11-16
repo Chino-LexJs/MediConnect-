@@ -15,7 +15,7 @@ function PrescriptionForm({ patientId, setDisplayed }) {
   const onSubmit = async (data) => {
     try {
       const response = await axios.post(
-        `http://localhost:3001/patient/prescription_drug/${patientId}`,
+        `/patient/prescription_drug/${patientId}`,
         data
       );
 
