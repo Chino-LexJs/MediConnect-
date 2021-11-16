@@ -134,7 +134,7 @@ const createDoctor = async (req, res) => {
         {
           enrollment,
           location,
-          signature:blob,
+          signature: blob,
         },
         {
           fields: ["enrollment", "location", "signature"],
@@ -532,6 +532,11 @@ const getAppointmentByDay = async (req, res) => {
 const createWorkDay = async (req, res) => {
   const { id } = req.params;
   const { week } = req.body;
+  await Work_day.destroy({
+    where: {
+      doctorId: id,
+    },
+  });
   try {
     const newWorkDay = await Work_day.bulkCreate(week, {
       fields: ["id", "day", "init", "end"],
