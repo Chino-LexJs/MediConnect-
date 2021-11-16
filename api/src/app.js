@@ -164,7 +164,7 @@ const server = express();
 
 server.name = "API";
 
-// middlewares
+// middlewaresx
 server.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
