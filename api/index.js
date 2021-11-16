@@ -72,7 +72,7 @@ conn.sync({ force: false }).then(async () => {
     addHealthInsurance(obras_sociales);
     addSpeciality(especialidades);
   }
-  //start server
+  //start serverr
   const port = 3001;
   server_pp.listen(port, () => {
     console.log(`Server is executed on port ${port}`); // view on console
