@@ -1,23 +1,59 @@
+
 # MediConnect+
 
-## App de Telemedicina
+## About
 
-### Instalar dependencias
+- App desarrollada con JavaScript, NodeJs, Express, PostgreSQL, Sequelize, React, Redux y Material UI.
 
-[] client: npm install </br>
-[] api: npm install
+## Funcionalidades: 
+- Login
+- Agregar Paciente/Profesional
+- Hablar mediante Chat integrado.
+- Realizar Videollamada.
+- Registrar Turnos.
+- Solicitar/Emitir Recetas.
+- Solicitar/Emitir Ordenes Medicas.
 
-### Quick Start
 
-[] client: npm start </br>
-[] api: npm start
+__Pagina inicial__: 
 
- practicasRama
-### Modificando Readme!!!
+![landing](client/public/landing.png)
 
-### Holasa
+__Formulario Profesional__:
 
-### CREANDO RAMA NUEVA
+![formularioDoctor](client/public/formularioDoctor.png)
 
-### Creando nueva rama 2.0
+__Login__: 
+
+![login](client/public/login.png)
+
+__Ruta principal__: 
+
+![main](client/public/main.png)
+
+__Contactos__:
+
+![contactos](client/public/contactos.png)
+![contactos02](client/public/contactos02.png)
+
+__Chat__:
+
+![chat](client/public/chat.png)
+
+__Videollamada__:
+
+![videollamada](client/public/videollamada.png)
+
+__Recetas medicas__:
+
+![receta](client/public/receta.png)
+![recetas](client/public/recetas.png)
+
+__Registro de enfermedades__:
+
+![registroEnfermedades](client/public/registroEnfermedades.png)
+
+__Coordinar Turno__:
+
+![sacarTurno](client/public/sacarTurno.png)
 
